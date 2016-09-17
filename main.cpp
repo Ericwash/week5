@@ -40,7 +40,24 @@ struct Student {
 
 //Create a function to read a file into a Student.
 //vvvvvvvvvvvvvvvvvvvv
+Student read_data(string fileName){
+	fstream inFile(fileName, ios::in);
 
+	Student s;
+	string trash;
+	inFile >> trash;
+	inFile >> s.name;
+	inFile >> trash;
+	inFile >> s.major;
+	inFile >> trash;
+	inFile >> s.age;
+	inFile >> trash;
+	inFile >> s.gpa;
+
+	inFile.close();
+
+	return s;
+}
 
 
 //^^^^^^^^^^^^^^^^^^^^
@@ -48,6 +65,7 @@ struct Student {
 int main()
 {
 	list<string> fileNames = get_file_names("Students");
+	list<string> fileNames2 = fileNames;
 	//Print the names of the files found in the directory here.
 	//vvvvvvvvvvvvvvvvvvvv
 	while (!fileNames.empty()) {
@@ -61,7 +79,10 @@ int main()
 	
 	//Read all of the student data files into the vector of Students.
 	//vvvvvvvvvvvvvvvvvvvv
-	
+	while(!fileNames2.empty()){
+		roster.push_back(read_data(fileNames.front()));
+		fileNames2.pop_front();
+	}
 	
 	
 	//^^^^^^^^^^^^^^^^^^^^
