@@ -15,7 +15,7 @@ list<string> get_file_names(string directory){
 	DIR *p_direct;
 	struct dirent *p_entry;
 	list<string> fileNames;
-	
+
 	if ((p_direct = opendir (directory.c_str())) != nullptr){
 		while ((p_entry = readdir (p_direct)) != nullptr){
 			fileNames.push_back(p_entry->d_name);
@@ -24,9 +24,9 @@ list<string> get_file_names(string directory){
 	}
 	else
 		cerr<<"Could not open directory";
-	
+
 	//_______________________
-	
+
 	return fileNames;
 }
 
@@ -49,19 +49,22 @@ int main()
 	list<string> fileNames = get_file_names("Students");
 	//Print the names of the files found in the directory here.
 	//vvvvvvvvvvvvvvvvvvvv
-	
-	
-	
+
+	while(!fileNames.empty()){
+	cout<<fileNames.front()<<endl;
+	fileNames.pop_front();
+	}
+
 	//^^^^^^^^^^^^^^^^^^^^
-	
+
 	vector<Student> roster;
-	
+
 	//Read all of the student data files into the vector of Students.
 	//vvvvvvvvvvvvvvvvvvvv
-	
-	
-	
+
+
+
 	//^^^^^^^^^^^^^^^^^^^^
-	
+
 	return 0;
 }
