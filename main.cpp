@@ -42,7 +42,7 @@ struct Student {
 
 //Create a function to read a file into a Student.
 //vvvvvvvvvvvvvvvvvvvv
-Student read_date(string fileName){
+Student read_data(string fileName){
 	fstream inFile(fileName, ios::in);
 	
 	Student s;
