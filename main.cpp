@@ -67,6 +67,7 @@ Student read_data(string fileName)
 int main()
 {
 	list<string> fileNames = get_file_names("Students");
+	list<string> fileNames2 = fileNames;
 	//Print the names of the files found in the directory here.
 	//vvvvvvvvvvvvvvvvvvvv
 	
@@ -79,11 +80,15 @@ int main()
 	//^^^^^^^^^^^^^^^^^^^^
 	
 	vector<Student> roster;
-	
+
 	//Read all of the student data files into the vector of Students.
 	//vvvvvvvvvvvvvvvvvvvv
 	
-	
+	while (!fileNames2.empty())
+	{
+		roster.push_back(read_data(fileNames2.front()));
+		fileNames2.pop_front();
+	}
 	
 	//^^^^^^^^^^^^^^^^^^^^
 	
