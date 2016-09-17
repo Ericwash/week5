@@ -4,6 +4,7 @@
 #include <vector>
 #include <list>
 #include <dirent.h>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -18,7 +19,7 @@ list<string> get_file_names(string directory){
 
 	if ((p_direct = opendir (directory.c_str())) != nullptr){
 		while ((p_entry = readdir (p_direct)) != nullptr){
-			fileNames.push_back(p_entry->d_name);
+			if (p_entry->d_name[0] != '.') fileNames.push_back(p_entry->d_name);
 		}
 		closedir(p_direct);
 	}
@@ -35,11 +36,30 @@ struct Student {
 	string major;
 	int age;
 	float gpa;
+	Student() {}
+	//Student(string n, string m, int a, float g) : name(n), major(m), age(a), gpa(g) {}
 };
 
 //Create a function to read a file into a Student.
 //vvvvvvvvvvvvvvvvvvvv
 
+Student read_data(string fileName) {
+	fstream inFile(fileName, ios::in);
+	Student s;
+	string line;
+	int index;
+	getline(inFile, line);
+	s.name = line.substr(line.find(": ") + 2, line.size() - (line.find(": ") + 2));
+	getline(inFile, line);
+        s.major = line.substr(line.find(": ") + 2, line.size() - (line.find(": ") + 2));
+	getline(inFile, line);
+        s.age = atoi(line.substr(line.find(": ") + 2, line.size() - (line.find(": ") + 2)).c_str());
+	getline(inFile, line);
+        s.gpa = atof(line.substr(line.find(": ") + 2, line.size() - (line.find(": ") + 2)).c_str());
+	inFile.close();
+	return s;
+	//return Student("hello", "hello", 45, 56.7);
+}
 
 
 //^^^^^^^^^^^^^^^^^^^^
@@ -49,10 +69,6 @@ int main()
 	list<string> fileNames = get_file_names("Students");
 	//Print the names of the files found in the directory here.
 	//vvvvvvvvvvvvvvvvvvvv
-
-	//for (int i = 0; i < fileNames.size(); i++) {
-	//	cout << fileNames[i] << endl;
-	//}
 
 	list<string>::iterator i;
 
@@ -65,7 +81,7 @@ int main()
 	//Read all of the student data files into the vector of Students.
 	//vvvvvvvvvvvvvvvvvvvv
 
-
+	for (i = fileNames.begin(); i != fileNames.end(); i++) roster.push_back(read_data((string("Students/") + *i)));
 
 	//^^^^^^^^^^^^^^^^^^^^
 
