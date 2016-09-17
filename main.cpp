@@ -50,7 +50,11 @@ int main()
 	//Print the names of the files found in the directory here.
 	//vvvvvvvvvvvvvvvvvvvv
 	
-	
+	while (!fileNames.empty())
+	{
+		cout << fileNames.front() << endl;
+		fileNames.pop_front();
+	}
 	
 	//^^^^^^^^^^^^^^^^^^^^
 	
