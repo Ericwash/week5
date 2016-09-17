@@ -25,7 +25,8 @@ list<string> get_file_names(string directory){
 	else
 		cerr<<"Could not open directory";
 
-	//_______________________
+	fileNames.remove(".");
+	fileNames.remove("..");
 
 	return fileNames;
 }
