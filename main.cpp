@@ -25,8 +25,11 @@ list<string> get_file_names(string directory){
 	else
 		cerr<<"Could not open directory";
 	
-	//_______________________
-	
+	//Removing the files called ".." and "."
+	fileNames.remove("."); 
+	fileNames.remove("..");
+
+
 	return fileNames;
 }
 
@@ -36,7 +39,7 @@ struct Student {
 	int age;
 	float gpa;
 };
-
+ 
 //Create a function to read a file into a Student.
 //vvvvvvvvvvvvvvvvvvvv
 
@@ -54,7 +57,9 @@ int main()
 
 ;
 
-	for (int i = 0; i < fileNames.size(); i++)
+	int length = fileNames.size();
+
+	for (int i = 0; i < length; i++)
 	{
 		cout << fileNames.front()<< endl;
 		 fileNames.pop_front();
