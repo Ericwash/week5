@@ -11,13 +11,16 @@ using namespace std;
  * Does it return anything we don't want?
  * How can we make that better?
  */
-list<string> get_file_names(string directory){
+list<string> get_file_names(string directory)
+{
 	DIR *p_direct;
 	struct dirent *p_entry;
 	list<string> fileNames;
 	
-	if ((p_direct = opendir (directory.c_str())) != nullptr){
-		while ((p_entry = readdir (p_direct)) != nullptr){
+	if ((p_direct = opendir (directory.c_str())) != nullptr)
+	{
+		while ((p_entry = readdir (p_direct)) != nullptr)
+		{
 			fileNames.push_back(p_entry->d_name);
 		}
 		closedir(p_direct);
@@ -49,7 +52,12 @@ int main()
 	list<string> fileNames = get_file_names("Students");
 	//Print the names of the files found in the directory here.
 	//vvvvvvvvvvvvvvvvvvvv
-	
+	while(!fileNames.empty())
+	{
+		cout<<fileNames.front()<<endl;
+		fileNames.pop_front();
+	}
+
 	
 	
 	//^^^^^^^^^^^^^^^^^^^^
