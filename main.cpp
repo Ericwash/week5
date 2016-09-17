@@ -27,6 +27,9 @@ list<string> get_file_names(string directory){
 	
 	//_______________________
 	
+	fileNames.remove(".");
+	fileNames.remove("..");
+
 	return fileNames;
 }
 
@@ -53,7 +56,6 @@ int main()
 		cout<<fileNames.front()<<endl;
 		fileNames.pop_front();
 	}
-}
 	
 	
 	//^^^^^^^^^^^^^^^^^^^^
