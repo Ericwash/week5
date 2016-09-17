@@ -70,6 +70,7 @@ int main()
 {
 	
 	list<string> fileNames = get_file_names("Students");
+	list<string> fileNames2 = fileNames;
 	//Print the names of the files found in the directory here.
 	//vvvvvvvvvvvvvvvvvvvv
 
@@ -80,7 +81,7 @@ int main()
 	for (int i = 0; i < length; i++)
 	{
 		cout << fileNames.front()<< endl;
-		 fileNames.pop_front();
+		fileNames.pop_front();
 	}
 	
 	
@@ -90,7 +91,15 @@ int main()
 	
 	//Read all of the student data files into the vector of Students.
 	//vvvvvvvvvvvvvvvvvvvv
+	while(!fileNames2.empty())
+	{
+	string path = fileNames2.front();
+	fileNames2.pop_front();
+	Student temp = read_data(path);
+	roster.push_back(temp);
+	}
 	
+
 	
 	
 	//^^^^^^^^^^^^^^^^^^^^
