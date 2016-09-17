@@ -44,12 +44,21 @@ struct Student {
 
 //^^^^^^^^^^^^^^^^^^^^
 
+
 int main()
 {
+	
 	list<string> fileNames = get_file_names("Students");
 	//Print the names of the files found in the directory here.
 	//vvvvvvvvvvvvvvvvvvvv
-	
+
+;
+
+	for (int i = 0; i < fileNames.size(); i++)
+	{
+		cout << fileNames.front()<< endl;
+		 fileNames.pop_front();
+	}
 	
 	
 	//^^^^^^^^^^^^^^^^^^^^
