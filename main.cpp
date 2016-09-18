@@ -83,6 +83,11 @@ int main()
 	
 	//Read all of the student data files into the vector of Students.
 	//vvvvvvvvvvvvvvvvvvvv
+		for(int i=0;i<fileNames2.size();i++)	
+	{
+		roster.push_back(read_data(fileNames2.front()));
+		fileNames2.pop_front();
+	}
 	
 	
 	
