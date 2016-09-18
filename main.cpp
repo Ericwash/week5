@@ -68,6 +68,12 @@ int main()
 	list<string> fileNames = get_file_names("Students");
 	//Print the names of the files found in the directory here.
 	//vvvvvvvvvvvvvvvvvvvv
+	list<string> fileNames2=fileNames;
+	while(!fileNames.empty())
+	{
+		cout<<fileNames.front()<<endl;
+		fileNames.pop_front();
+	}
 	
 	
 	
